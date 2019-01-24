@@ -2,6 +2,7 @@
 backend/node_modules
 backend/logs
 backend/config/db.js
+backend/config/config.js
 backend/apidoc
 backend/package-lock.json
 fontend/node_modules
