@@ -1,0 +1,44 @@
+@import '../../style/common.less';
+.bgmask{
+    .mask(3);
+}
+.main-list{
+    float: left;
+    margin-top: 30px;
+    width: 100%;
+}
+.comment-list{
+    position: relative;
+    float: left;
+    height: auto;
+    padding-bottom: 100px;
+    z-index: 5;
+    width:100%;
+    padding: 0 120px;
+    box-sizing: border-box;
+    margin-top:20px;
+}
+.reply-list{
+    float: left;
+    width:100%;
+}
+.ant-comment-inner{
+    border:1px solid white;
+    border-radius: 7px;
+}
+.chat-title{
+    float: left;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    height: 30px;
+    text-align: center;
+    position: relative;
+    z-index: 5;
+}
+.reply-list .ant-comment-inner{
+    border:none;
+    border-bottom: 1px solid white;
+    border-radius: 0px;
+}

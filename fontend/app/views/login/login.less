@@ -1,0 +1,63 @@
+@import '../../style/common.less';
+
+.login {
+    font-size: 40px;
+    text-decoration: underline;
+}
+.input{
+    margin-top: 15px;
+}
+
+.tab-area{
+    .posleft(100%, auto, 0, 100px, 999);
+    .ant-tabs-nav{
+        left: 50%;
+        color: #fff;
+        margin-left: -75px;
+    }  
+    .input-area{
+        .block(100%, auto, 0, 100px);  
+        .input{
+            .block(30%, auto, 35%, 40px);
+            border:none;
+            border-bottom: 1px solid @primary-color;
+            border-radius: 0px;
+            background-color:transparent;
+            outline: none;
+            color: @white;
+        }  
+    }
+}
+
+.background-area{
+    width: 100%;
+    height: 100vh;
+    float: left;
+    position: relative;
+    overflow: hidden;
+    background: url('~@assets/images/bg_login.jpg');
+    background-size: cover;
+    background-position: center;
+    .login-btn{
+        .block(30%, 40px, 35%, 40px);
+    }
+    .title{
+        .posleft(100%, 30px, 10px, 0, 5);
+        text-align: center;
+    }
+    .bgmask{
+        .mask(3);
+    }
+}
+.background-area:after{
+    content: "";
+    width:100%;
+    height:100%;
+    position: absolute;
+    left:0;
+    top:0;
+    background: inherit;
+    filter: blur(10px);
+    z-index: 2;
+}
+

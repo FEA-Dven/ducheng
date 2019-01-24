@@ -1,0 +1,44 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "api-server",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha --timeout 999999"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.starsriver.cn:plat/api.git"
+  },
+  "author": "starsriver",
+  "license": "ISC",
+  "dependencies": {
+    "ali-oss": "^6.0.1",
+    "co": "^4.6.0",
+    "crypto": "^1.0.1",
+    "ioredis": "^3.2.2",
+    "joi": "^13.4.0",
+    "knex": "^0.15.2",
+    "koa": "^2.5.2",
+    "koa-body": "^4.0.4",
+    "koa-bodyparser": "^4.2.1",
+    "koa-cors": "0.0.16",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
+    "koa-xml-body": "^2.0.0",
+    "log4js": "^2.11.0",
+    "md5": "^2.2.1",
+    "mocha": "^5.2.0",
+    "moment": "^2.22.2",
+    "mysql": "^2.16.0",
+    "oauth2-server": "^3.0.0",
+    "path": "^0.12.7",
+    "querystring": "^0.2.0",
+    "request": "^2.87.0",
+    "underscore": "^1.9.1",
+    "uuid": "^3.3.2",
+    "xlsx": "^0.13.4",
+    "xml2js": "^0.4.19"
+  },
+  "devDependencies": {}
+}

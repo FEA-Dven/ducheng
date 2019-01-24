@@ -1,0 +1,9 @@
+.DS_Store
+.jshintrc
+npm-debug.log
+node_modules
+build/
+# vscode cache
+.vscode
+# mac 文件夹cache
+*/**/.DS_Store
