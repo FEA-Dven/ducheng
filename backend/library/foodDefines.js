@@ -1,3 +1,4 @@
+const config = require('./../config/config.js');
 /**
  * 定义一些key或者常量
  * 例如:redis存储key, 常用的不随环境变化的配置
@@ -67,9 +68,8 @@ module.exports = {
     * @description 获取用户名 
     */
     realNameList: function() {
-        return [
-            '邓耀文'
-        ]
+        return config.whiteNameList;
+
     },
 
     foodMenuList: function() {
