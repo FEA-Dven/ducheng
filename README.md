@@ -5,4 +5,4 @@
 ## 分别进入两个文件夹 cnpm install
 ## 前端开发 npm run dev
 ## 后端开发 pm2 start app.js --watch
-## 如果需要本地调试，进入./fontend/app/config.js export const API_HOST = API_HOSTS['prod'] => export const API_HOST = API_HOSTS['']。
+## 如果需要本地调试，进入./fontend/app/config.js export const API_HOST = API_HOSTS['prod'] => export const API_HOST = API_HOSTS['dev']。
