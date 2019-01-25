@@ -1,15 +1,19 @@
 CREATE DATABASE food_program;
 USE food_program;
 # 用户表
-CREATE TABLE t_food_user(
-    uid int(11) auto_increment primary key COMMENT '用户id',
-    user_name varchar(255) NOT NULL COMMENT '用户昵称',
-    password varchar(255) NOT NULL COMMENT '用户密码',
-    create_time BIGINT(20) DEFAULT 0 NOT NULL COMMENT '创建时间',
-    update_time BIGINT(20) DEFAULT 0 NOT NULL COMMENT '修改时间',
-    status TINYINT(2) DEFAULT 1 NOT NULL COMMENT '状态 0:删除, 1:正常',
-    UNIQUE KEY `uidx_uid_user_name` (`uid`,`user_name`) USING BTREE
-)ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COMMENT = 'food 用户表' ;
+CREATE TABLE `t_food_user` (
+  `fid` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户id',
+  `user_name` varchar(255) NOT NULL COMMENT '用户昵称',
+  `account` varchar(255) DEFAULT '' COMMENT '用户账号',
+  `password` varchar(255) NOT NULL COMMENT '用户密码',
+  `create_time` bigint(20) NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `update_time` bigint(20) NOT NULL DEFAULT '0' COMMENT '修改时间',
+  `status` tinyint(2) NOT NULL DEFAULT '1' COMMENT '状态 0:删除, 1:正常',
+  `super` tinyint(2) DEFAULT '0' COMMENT '是否超级管理员',
+  PRIMARY KEY (`fid`),
+  UNIQUE KEY `uidx_uid_user_name` (`fid`,`user_name`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COMMENT='food 用户表';
+
 
 CREATE TABLE t_food_menu(
     menu_id int(11) auto_increment primary key COMMENT '菜单id',
