@@ -8,7 +8,7 @@ module.exports = {
     * @param {Number} is_open 开关值 0:关1:开
     */
     changeSystemOpen: async function ({ fid, is_open }) {
-        let userInfo = await userModel.findOne('super', {
+        let userInfo = await userModel.findOne('role', {
             'fid': fid
         });
         if (userInfo.role !== 1) {
