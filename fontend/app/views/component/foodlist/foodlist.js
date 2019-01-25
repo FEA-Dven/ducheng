@@ -33,14 +33,17 @@ class FoodList extends React.Component {
     */
     getFoodList = async () => {
         let res = await API.getFoodList({
-            per_page: 50,
+            per_page: 100,
             page_number: 1
         });
         if (!res) return;
         let foodData = {
             daliy: [],
             hotfood: [],
-            fire: []
+            fire: [],
+            stew: [],
+            drink: [],
+            noodles: [],
         }
         let foodList = res.list;
         foodList.forEach(item => {
@@ -55,8 +58,17 @@ class FoodList extends React.Component {
             if (item.type === 2) {
                 foodData.fire.push(item);
             }
+            if (item.type === 3) {
+                foodData.stew.push(item);
+            }
+            if (item.type === 4) {
+                foodData.drink.push(item);
+            }
+            if (item.type === 5) {
+                foodData.noodles.push(item);
+            }
         });
-        let allFoodList = [...foodData.daliy, ...foodData.hotfood, ...foodData.fire];
+        let allFoodList = [...foodData.daliy, ...foodData.hotfood, ...foodData.fire, ...foodData.stew, ...foodData.drink, ...foodData.noodles];
         this.setState({
             foodList: foodData,
             foodListSrc: foodData,
@@ -120,7 +132,7 @@ class FoodList extends React.Component {
     * @description 过滤食物列表
     */
     filterFoodList = () => {
-        let { searchKey, foodListSrc, allFoodList } = this.state;
+        let { searchKey, allFoodList } = this.state;
         let foodList = [];
         for (let i =  0; i < allFoodList.length; i++) {
             let food = allFoodList[i];
@@ -240,7 +252,7 @@ class FoodList extends React.Component {
         // 操作按钮区域
         const ActionArea = ({ menuid }) => {
             let showReduceBtn = cacheMenuList.find(item => item.menu_id === menuid);
-            return (<div >
+            return (<div>
                 <Button disabled={has_order} className='action-btn' size='small' icon='plus' data-menuid={menuid} onClick={this.addMenu} ghost={true}/>
                 {showReduceBtn ? <Button disabled={has_order} className='action-btn' size='small' icon='minus' data-menuid={menuid} onClick={this.reduceMenu} ghost={true}/> : ''}
             </div>)
@@ -260,8 +272,8 @@ class FoodList extends React.Component {
                 <RadioGroup disabled={has_order} className='foodlist' options={foodList} onChange={this.onChange} value={this.state.selectFood} />
             </div>
         </div>
-
-        let DaliyFoodList = foodList.daliy && foodList.daliy.map(item => {
+        // 菜单模型
+        const MenuModel = ({item}) => {
             return (
                 <div className='menu-item' key={item.menu_id}>
                     <div className='menu-name'>{item.menu_name}</div>
@@ -269,24 +281,24 @@ class FoodList extends React.Component {
                     <ActionArea menuid={item.menu_id} />
                 </div>
             )
+        }
+        let DaliyFoodList = foodList.daliy && foodList.daliy.map((item, index) => {
+            return <MenuModel key={index} item={item}/>
         });
-        let FireFoodList = foodList.fire && foodList.fire.map(item => {
-            return (
-                <div className='menu-item' key={item.menu_id}>
-                    <div className='menu-name'>{item.menu_name}</div>
-                    <div className='price'>({item.price}元)</div>
-                    <ActionArea  menuid={item.menu_id} />
-                </div>
-            )
+        let FireFoodList = foodList.fire && foodList.fire.map((item, index) => {
+            return <MenuModel key={index} item={item}/>
         });
-        let HotFoodList = foodList.hotfood && foodList.hotfood.map(item => {
-            return (
-                <div className='menu-item' key={item.menu_id}>
-                    <div className='menu-name'>{item.menu_name}</div>
-                    <div className='price'>({item.price}元)</div>
-                    <ActionArea  menuid={item.menu_id} />
-                </div>
-            )
+        let HotFoodList = foodList.hotfood && foodList.hotfood.map((item, index) => {
+            return <MenuModel key={index} item={item}/>
+        });
+        let StewFoodList = foodList.stew && foodList.stew.map((item, index) => {
+            return <MenuModel key={index} item={item}/>
+        });
+        let DrinkFoodList = foodList.drink && foodList.drink.map((item, index) => {
+            return <MenuModel key={index} item={item}/>
+        });
+        let NoodlesFoodList = foodList.noodles && foodList.noodles.map((item, index) => {
+            return <MenuModel key={index} item={item}/>
         });
         let normalArea = <div>
             <div className='title'>每旬菜式</div>
@@ -300,6 +312,18 @@ class FoodList extends React.Component {
             <div className='title'>明炉烧味</div>
             <div className='foodlist'>
                 {FireFoodList}
+            </div>
+            <div className='title'>滋补炖品</div>
+            <div className='foodlist'>
+                {StewFoodList}
+            </div>
+            <div className='title'>冷热饮品</div>
+            <div className='foodlist'>
+                {DrinkFoodList}
+            </div>
+            <div className='title'>港式粉面</div>
+            <div className='foodlist'>
+                {NoodlesFoodList}
             </div>
         </div>
         let showCacheMenuList = cacheMenuList.map(item => {

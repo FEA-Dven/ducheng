@@ -117,7 +117,7 @@ module.exports = {
         let res = await db.writeMysql.select(
             'account',
             'user_name',
-            'super'
+            'role'
         )
         .where({'fid': fid})
         .from(TABEL)

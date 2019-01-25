@@ -3,6 +3,7 @@ import { API_HOST } from '@config';
 import Cookies from 'js-cookie';
 import { Message } from 'antd';
 import { getUserInfoFromCookie, clearUserInfoCookie } from '@libs/util';
+import { message } from 'antd';
 class httpRequest {
     constructor () {
         this.options = {
@@ -42,6 +43,15 @@ class httpRequest {
                 return Promise.resolve(data);
             }
         }, (error) => {
+            let { status } =  error.response;
+            // 403用户token失效需要返回登录页
+            if (status && status === 403) {
+                message.error('token失效，请重新登录', 1).then(() => {
+                    clearUserInfoCookie();
+                    window.location.href = '/food/login';
+                });
+                return;
+            }
             let res = error.response || {data:{msg:'no response'}};
             return Promise.reject(res.data);
         });

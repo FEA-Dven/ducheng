@@ -53,7 +53,7 @@ class Index extends React.Component {
             contentList: userOrderListInfo.recordList,
             orderNum: userOrderListInfo.order_num,
             has_order: userOrderStatus.has_order,
-            isSuper: userInfo.super === 1
+            isSuper: userInfo.role === 1
         });
     }
 
