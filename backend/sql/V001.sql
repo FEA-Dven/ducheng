@@ -2,9 +2,10 @@ CREATE DATABASE food_program;
 USE food_program;
 # 用户表
 CREATE TABLE t_food_user(
-    uid int(11) auto_increment primary key COMMENT '用户id',
+    fid int(11) auto_increment primary key COMMENT '用户id',
     user_name varchar(255) NOT NULL COMMENT '用户昵称',
     password varchar(255) NOT NULL COMMENT '用户密码',
+    role TINYINT(2) DEFAULT 0 COMMENT '用户角色(项目关系，没有用关联表)',
     create_time BIGINT(20) DEFAULT 0 NOT NULL COMMENT '创建时间',
     update_time BIGINT(20) DEFAULT 0 NOT NULL COMMENT '修改时间',
     status TINYINT(2) DEFAULT 1 NOT NULL COMMENT '状态 0:删除, 1:正常',
@@ -26,8 +27,7 @@ CREATE TABLE t_food_menu(
 CREATE TABLE t_food_user_menu_refs(
     id int(11) auto_increment primary key COMMENT '记录id',
     fid int(11) NOT NULL COMMENT '用户id',
-    menu_id int(11) NOT NULL COMMENT '菜单id',
-    role TINYINT(2) DEFAULT 0 COMMENT '用户角色(项目关系，没有用关联表)',
+    menu_id int(11) NOT NULL COMMENT '菜单id'
     create_time BIGINT(20) DEFAULT 0 NOT NULL COMMENT '创建时间',
     update_time BIGINT(20) DEFAULT 0 NOT NULL COMMENT '修改时间',
     status TINYINT(2) DEFAULT 1 NOT NULL COMMENT '状态 0:删除, 1:正常',
