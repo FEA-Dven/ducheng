@@ -228,6 +228,176 @@ module.exports = {
                 price: 14,
                 menu_name: '明炉烧鸭(碟)',
                 type: 2
+            },
+            {
+                price: 11,
+                menu_name: '莲子百合炖瘦肉',
+                type: 3
+            },
+            {
+                price: 11,
+                menu_name: '香菇栗子炖排骨',
+                type: 3
+            },
+            {
+                price: 11,
+                menu_name: '青榄炖瘦肉',
+                type: 3
+            },
+            {
+                price: 12,
+                menu_name: '西洋菜炖陈肾',
+                type: 3
+            },
+            {
+                price: 14,
+                menu_name: '花旗参炖竹丝鸡',
+                type: 3
+            },
+            {
+                price: 18,
+                menu_name: '虫草菌干鲍鱼炖瘦肉',
+                type: 3
+            },
+            {
+                price: 20,
+                menu_name: '花胶红枣炖竹丝鸡',
+                type: 3
+            },
+            {
+                price: 8,
+                menu_name: '都城玉米汁(开发推荐)',
+                type: 4
+            },
+            {
+                price: 8,
+                menu_name: '鲜奶红豆冰',
+                type: 4
+            },
+            {
+                price: 8,
+                menu_name: '冻鸳鸯',
+                type: 4
+            },
+            {
+                price: 8,
+                menu_name: '热鸳鸯',
+                type: 4
+            },
+            {
+                price: 8,
+                menu_name: '冻奶茶',
+                type: 4
+            },
+            {
+                price: 8,
+                menu_name: '热奶茶',
+                type: 4
+            },
+            {
+                price: 8,
+                menu_name: '冻咖啡',
+                type: 4
+            },
+            {
+                price: 8,
+                menu_name: '热咖啡',
+                type: 4
+            },
+            {
+                price: 8,
+                menu_name: '鲜柠蜜',
+                type: 4
+            },
+            {
+                price: 8,
+                menu_name: '鲜柠茶',
+                type: 4
+            },
+            {
+                price: 8,
+                menu_name: '冻豆浆',
+                type: 4
+            },
+            {
+                price: 8,
+                menu_name: '热豆浆',
+                type: 4
+            },
+            {
+                price: 14,
+                menu_name: '炸酱面',
+                type: 5
+            },
+            {
+                price: 17,
+                menu_name: '鲜虾蟹子云吞面',
+                type: 5
+            },
+            {
+                price: 17,
+                menu_name: '鲜虾蟹子云吞粉',
+                type: 5
+            },
+            {
+                price: 17,
+                menu_name: '净鲜虾蟹子云吞',
+                type: 5
+            },
+            {
+                price: 17,
+                menu_name: '和味排骨面',
+                type: 5
+            },
+            {
+                price: 17,
+                menu_name: '和味排骨粉',
+                type: 5
+            },
+            {
+                price: 19,
+                menu_name: '明炉烧鸭面',
+                type: 5
+            },
+            {
+                price: 19,
+                menu_name: '明炉烧鸭粉',
+                type: 5
+            },
+            {
+                price: 20,
+                menu_name: '黑椒烧排骨面',
+                type: 5
+            },
+            {
+                price: 20,
+                menu_name: '黑椒烧排骨粉',
+                type: 5
+            },
+            {
+                price: 20,
+                menu_name: '秘制牛腩面',
+                type: 5
+            },
+            {
+                price: 20,
+                menu_name: '秘制牛腩粉',
+                type: 5
+            },
+            {
+                price: 20,
+                menu_name: '麻辣牛jian面',
+                type: 5
+            },
+            {
+                price: 20,
+                menu_name: '麻辣牛jian粉',
+                type: 5
+            },
+            {
+                price: 23,
+                menu_name: '鲍汁花胶捞面',
+                type: 5
             }
         ];
         return foodData;

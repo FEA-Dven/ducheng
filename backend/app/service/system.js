@@ -11,7 +11,7 @@ module.exports = {
         let userInfo = await userModel.findOne('super', {
             'fid': fid
         });
-        if (userInfo.super !== 1) {
+        if (userInfo.role !== 1) {
             throw new ApiError('food.blackHouse');
         }
         await systemModel.changeSystemOpen(is_open);

@@ -71,11 +71,11 @@ class Chat extends React.Component {
     * @author dven 
     * @description 用户点赞 
     * @param {Number} comment_id 评论id
-    * @param {Number} uid 用户id
+    * @param {Number} fid 用户id
     */
     userLike = (e) => {
         e.persist()
-        let uid = e.target.dataset.uid;
+        let fid = e.target.dataset.fid;
         let comment_id = e.target.dataset.commentid;
     }
 
@@ -84,7 +84,7 @@ class Chat extends React.Component {
         let mainCommentList = [
             {
                 comment_id: 1,
-                uid: 3,
+                fid: 3,
                 user_name: 'dven',
                 content: '这是发起人主题',
                 like: 2,
@@ -92,14 +92,14 @@ class Chat extends React.Component {
                 reply_list: [
                     {
                         reply_id: 1,
-                        uid: 1,
+                        fid: 1,
                         user_name: '小红',
                         content: 'hello',
                         time: moment().unix()
                     },
                     {
                         reply_id: 2,
-                        uid: 2,
+                        fid: 2,
                         user_name: '小明',
                         content: 'hello_dj',
                         time: moment().unix()
@@ -108,7 +108,7 @@ class Chat extends React.Component {
             },
             {
                 comment_id: 2,
-                uid: 4,
+                fid: 4,
                 user_name: 'baby',
                 content: '这是发起人主题1',
                 like: 10,
@@ -116,14 +116,14 @@ class Chat extends React.Component {
                 reply_list: [
                     {
                         reply_id: 1,
-                        uid: 1,
+                        fid: 1,
                         user_name: '小红',
                         content: 'hello',
                         time: moment().unix()
                     },
                     {
                         reply_id: 2,
-                        uid: 2,
+                        fid: 2,
                         user_name: '小明',
                         content: 'hello_dj',
                         time: moment().unix()
@@ -131,11 +131,11 @@ class Chat extends React.Component {
                 ]
             }
         ];
-        const actions = (likes, comment_id, uid) => {
+        const actions = (likes, comment_id, fid) => {
             return [
                 <span>
                   <Tooltip title="Like">
-                    <Button ghost={true} icon="like" className='white-font none-border' onClick={this.userLike} data-commentid={comment_id} data-uid={uid}/>
+                    <Button ghost={true} icon="like" className='white-font none-border' onClick={this.userLike} data-commentid={comment_id} data-fid={fid}/>
                   </Tooltip>
                   <span style={{ cursor: 'auto', color: 'white' }}>
                     {likes}
@@ -151,7 +151,7 @@ class Chat extends React.Component {
                 content: item.content, 
                 time: item.time,
                 key: item.comment_id, 
-                actions: actions(item.like, item.comment_id, item.uid), 
+                actions: actions(item.like, item.comment_id, item.fid), 
                 list: item.reply_list
             })
         });
