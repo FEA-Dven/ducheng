@@ -4,6 +4,7 @@ const menuController = require('./../controller/menu.js');
 const userMenuController = require('./../controller/userMenu.js');
 const systemController = require('./../controller/system.js');
 const checkHeaderPermission = require('./../../library/checkHeader.js');
+const commentController = require('./../controller/comment.js');
 
 module.exports = function() {
     let router = new Router();
@@ -43,6 +44,21 @@ module.exports = function() {
 
     // 管理员获取开关状态
     router.get('/api/system/is_open', checkHeaderPermission.checkHeader, systemController.getSystemInfo);
+
+    // 用户发表评论
+    router.post('/api/user/send/comment', checkHeaderPermission.checkHeader, commentController.sendComment);
+
+    // 用户回复评论
+    router.post('/api/user/:comment_fid/comment/:comment_id/reply', checkHeaderPermission.checkHeader, commentController.replyComment);
+
+    // 用户点赞
+    router.post('/api/user/:comment_fid/comment/:comment_id/star', checkHeaderPermission.checkHeader, commentController.starComment);
+
+    // 获取用户评论列表
+    router.get('/api/comment/list', checkHeaderPermission.checkHeader, commentController.getCommentList);
+
+    // 管理员删除评论
+    router.delete('/api/comment/:comment_id/delete', checkHeaderPermission.checkHeader, commentController.deleteComment);
 
     return router;
 }

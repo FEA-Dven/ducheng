@@ -51,7 +51,10 @@ const defines = {
     'food.userNotOrderToday': {code: 1207, message: '您今天还没有订餐', status: 200},
     'food.orderIsEnd': {code: 1208, message: '订餐已经截止了，欢迎下次光临', status: 200},
     'food.blackHouse': {code: 1209, message: '别搞太多骚操作', status: 200},
-    'food.userAccessTokenForbidden': { code: 1210, message: 'token失效', status: 403 }
+    'food.userAccessTokenForbidden': { code: 1210, message: 'token失效', status: 403 },
+    'food.userHasStared': { code: 1211, message: '此评论您已点过赞', status: 200 },
+    'food.canNotReplySelf': { code: 1212, message: '不能回复自己的评论', status: 200 },
+    'food.overReplyLimit': { code: 1213, message: '回复评论数已超过%s条，不能再回复', status: 200 }
 };
 
 module.exports = function (errorName, params) {

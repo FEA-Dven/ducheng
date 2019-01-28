@@ -1,6 +1,6 @@
 import React from 'react';
 import FoodList from '@component/foodlist/foodlist';
-import { Input, List, Checkbox, Switch, Button, message } from 'antd';
+import { Input, List, Checkbox, Switch, Button, message, Spin } from 'antd';
 import { connect } from 'react-redux';
 import { logOut } from '@store/reducer/user';
 import menu from '@assets/images/menu.png';
@@ -21,7 +21,8 @@ class Index extends React.Component {
             order_end: false,
             has_order: false,
             showPayCode: false,
-            isSuper: false
+            isSuper: false,
+            pageLoading: true
         }
     }
 
@@ -31,7 +32,7 @@ class Index extends React.Component {
         order_end = systemInfo.order_end;
         order_end === 1 ? order_end = true : order_end = false;
         this.setState({
-            order_end
+            order_end,
         }, ()=> {
             this.renderPage();
         });
@@ -43,18 +44,23 @@ class Index extends React.Component {
     * @param
     */
     renderPage = async () => {
-        let [ userOrderListInfo, userOrderStatus, userInfo ] = await Promise.all([
-            API.getUserOrderList(),
-            API.getUserOrderStatus(),
-            API.getUserInfo()
-        ]);
         this.setState({
-            selectFoodList: userOrderListInfo.menuList,
-            contentList: userOrderListInfo.recordList,
-            orderNum: userOrderListInfo.order_num,
-            has_order: userOrderStatus.has_order,
-            isSuper: userInfo.role === 1
-        });
+            pageLoading: true
+        }, async () => {
+            let [ userOrderListInfo, userOrderStatus, userInfo ] = await Promise.all([
+                API.getUserOrderList(),
+                API.getUserOrderStatus(),
+                API.getUserInfo()
+            ]);
+            this.setState({
+                selectFoodList: userOrderListInfo.menuList,
+                contentList: userOrderListInfo.recordList,
+                orderNum: userOrderListInfo.order_num,
+                has_order: userOrderStatus.has_order,
+                isSuper: userInfo.role === 1,
+                pageLoading: false
+            });
+        })
     }
 
     /**
@@ -146,8 +152,6 @@ class Index extends React.Component {
     * @description 去聊天 
     */
     goToChat = () => {
-        message.error('暂未开放');
-        return;
         this.props.history.push('/food/chat');
     }
 
@@ -162,7 +166,7 @@ class Index extends React.Component {
 
     render() {
         let { nickname } = this.props; 
-        let { search_key, showMenu, orderNum, selectFoodList, contentList, has_order, showPayCode, isSuper } = this.state;
+        let { search_key, showMenu, orderNum, selectFoodList, contentList, has_order, showPayCode, isSuper, pageLoading } = this.state;
         let menuArea = <div onClick={this.closeMenuMask}>
             <div className='menu-area-mask'></div>
             <div className='menu-area'>
@@ -196,6 +200,7 @@ class Index extends React.Component {
         })
         return (
             <div className='bg'>
+                { pageLoading ? <div className='page-loading'><Spin className='spin' size='large' tip='加载中...'/></div> : '' }
                 <div className='bgmask'></div>
                 {showMenu ? menuArea : ''}
                 { showPayCode ? payArea : '' }
@@ -204,7 +209,7 @@ class Index extends React.Component {
                     <div className='welcome-name'>欢迎您，{nickname}</div>
                     <div className='logout' onClick={this.props.logOut}>退出登录</div>
                     {isSuper ? <Switch checked={this.state.order_end} className='switch' checkedChildren="关" unCheckedChildren="开" onChange={this.changeSystemOpen} /> : ''}
-                    <div className='chat' onClick={this.goToChat}>提交需求</div>
+                    <div className='chat' onClick={this.goToChat}>都城圈</div>
                     <div className='wxcode' onClick={this.showWxPayCode}>支付二维码</div>
                     <div className='official-website' onClick={this.goToWebsite}>去官网</div>
                     <div className='watchmenulist' onClick={this.watchMenuList}>查看菜单</div>

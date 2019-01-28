@@ -175,4 +175,74 @@ export const getUserInfo = async () => {
     })
 }
 
+/**
+* @author dven 
+* @description 回复用户的评论 
+* @param {Number} comment_fid 评论的发起人Id
+* @param {String} content 回复内容
+*/
+export const replyUserComment = async ({ comment_id, comment_fid, content }) => {
+    return await request({
+        url: `/api/user/${comment_fid}/comment/${comment_id}/reply`,
+        method: 'POST',
+        data: {
+            content
+        }
+    })
+}
+
+/**
+* @author dven 
+* @description 发表评论 
+* @param {String} content 回复内容
+*/
+export const sendComment = async ({ content }) => {
+    return await request({
+        url: '/api/user/send/comment',
+        method: 'POST',
+        data: {
+            content
+        }
+    })
+}
+
+/**
+* @author dven 
+* @description 用户点赞
+* @param {Number} comment_fid 评论用户id 
+* @param {Number} comment_id 评论id 
+*/
+export const userStar = async ({ comment_fid, comment_id }) => {
+    return await request({
+        url: `/api/user/${comment_fid}/comment/${comment_id}/star`,
+        method: 'post',
+        data: {}
+    })
+}
+
+/**
+* @author dven 
+* @description 发表评论 
+* @param {String} content 回复内容
+* @param {Number} per_page 页码限制数
+* @param {Number} page_number 页码数
+*/
+export const getCommentList = async ({ per_page, page_number }) => {
+    return await request({
+        url: `/api/comment/list${getDataUrl({ per_page, page_number })}`,
+        method: 'GET'
+    })
+}
+
+/**
+* @author dven 
+* @description 删除评论 
+* @param {Number} comment_id 评论id
+*/
+export const deleteComment = async ({ comment_id }) => {
+    return await request({
+        url: `/api/comment/${comment_id}/delete`,
+        method: 'DELETE'
+    })
+}
 
