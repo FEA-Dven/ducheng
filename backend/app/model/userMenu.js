@@ -1,5 +1,5 @@
 const db = require('./../../library/db.js');
-const TABEL = 't_food_user_menu_refs';
+const TABLE = 't_food_user_menu_refs';
 const moment = require('moment');
 const dateUtil = require('./../../util/dateUtil.js');
 
@@ -10,7 +10,7 @@ module.exports = {
     * @param {Array} userOrderList 用户订单菜单
     */
     userOrder: async function(userOrderList) {
-        let res = await db.writeMysql.batchInsert(TABEL, userOrderList, 30)
+        let res = await db.writeMysql.batchInsert(TABLE, userOrderList, 30)
         .returning('id')
 
         return res;
@@ -36,7 +36,7 @@ module.exports = {
             'status': 1,
             'fid': fid
         })
-        .from(TABEL)
+        .from(TABLE)
         .first()
 
         return res;
@@ -61,7 +61,7 @@ module.exports = {
         .andWhere({
             'fid': fid
         })
-        .from(TABEL)
+        .from(TABLE)
 
         return res;
     },
@@ -85,7 +85,7 @@ module.exports = {
         .andWhere({
             'status': 1
         })
-        .from(TABEL)
+        .from(TABLE)
         .orderBy('create_time', 'desc')
 
         return res;

@@ -1,5 +1,5 @@
 const db = require('./../../library/db.js');
-const TABEL = 't_food_menu';
+const TABLE = 't_food_menu';
 const moment = require('moment');
 
 module.exports = {
@@ -9,7 +9,7 @@ module.exports = {
     * @param {Object} menuData 菜单数据
     */
     batchInsertMenu: async function(menuData) {
-        let res = await db.writeMysql.batchInsert(TABEL, menuData, 30)
+        let res = await db.writeMysql.batchInsert(TABLE, menuData, 30)
             .returning('id')
 
         return res;
@@ -30,7 +30,7 @@ module.exports = {
         )
         .limit(per_page)
         .offset(offset)
-        .from(TABEL);
+        .from(TABLE);
 
         return res;
     },
@@ -42,7 +42,7 @@ module.exports = {
     getMenuListTotal: async function() {
         let res = await db.readMysql.count('menu_id as total')
             .first()
-            .from(TABEL);
+            .from(TABLE);
 
         return res;
     },
@@ -61,7 +61,7 @@ module.exports = {
         .whereIn(
             'menu_id', data
         )
-        .from(TABEL);
+        .from(TABLE);
 
         return res;
     }

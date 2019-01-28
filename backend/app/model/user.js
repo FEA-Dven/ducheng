@@ -1,5 +1,5 @@
 const db = require('./../../library/db.js');
-const TABEL = 't_food_user';
+const TABLE = 't_food_user';
 const moment = require('moment');
 
 module.exports = {
@@ -12,7 +12,7 @@ module.exports = {
     */
     addUser: async function(user_name, account, password) {
         let time = moment().unix();
-        let res = await db.writeMysql(TABEL)
+        let res = await db.writeMysql(TABLE)
         .returning('fid')
         .insert({
             'user_name': user_name,
@@ -38,7 +38,7 @@ module.exports = {
             'account': account,
             'status': 1
         })
-        .from(TABEL)
+        .from(TABLE)
         .first();
         
         return res;
@@ -53,7 +53,7 @@ module.exports = {
         let res = await db.readMysql.select(
             selectOption
         ).where(whereOptions)
-        .from(TABEL)
+        .from(TABLE)
         .first();
 
         return res;
@@ -71,7 +71,7 @@ module.exports = {
             'fid': fid,
             'status': 1
         })
-        .from(TABEL)
+        .from(TABLE)
         .first();
 
         return res;
@@ -87,7 +87,7 @@ module.exports = {
             'user_name',
             'fid'
         ).whereIn('fid', data)
-        .from(TABEL)
+        .from(TABLE)
 
         return res;
     },
@@ -103,7 +103,7 @@ module.exports = {
             'password': newPassword
         })
         .where({'account': account})
-        .from(TABEL)
+        .from(TABLE)
 
         return res;
     },
@@ -120,7 +120,7 @@ module.exports = {
             'role'
         )
         .where({'fid': fid})
-        .from(TABEL)
+        .from(TABLE)
         .first()
 
         return res;

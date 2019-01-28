@@ -2,6 +2,12 @@
 .bgmask{
     .mask(3);
 }
+.back{
+    position: absolute;
+    top:10px;
+    left: 20px;
+    z-index: 20;
+}
 .main-list{
     float: left;
     margin-top: 30px;
@@ -41,4 +47,33 @@
     border:none;
     border-bottom: 1px solid white;
     border-radius: 0px;
+}
+.editor{
+    z-index: 15;
+    position: fixed;
+    bottom: 0px;
+    left: 50%;
+    margin-left: -300px;
+    width: 600px;
+    border-radius: 7px;
+    border:1px solid @white;
+    background-color: #fff;
+    .reply-title{
+        float: left;
+        width: 100%;
+        color: black;
+        text-align: center;
+        height: 30px;
+        line-height: 30px;
+    }
+}
+.launch-btn{
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    z-index: 10;
+}
+.deletebtn{
+    border:none;
+    color: red
 }

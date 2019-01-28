@@ -60,4 +60,14 @@ CREATE TABLE t_food_reply(
     KEY `idx_reply_fid_comment_fid` (`reply_fid`,`comment_fid`) USING BTREE
 )ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COMMENT = '都城聊天表' ;
 
+CREATE TABLE t_food_comment_star_refs(
+    id int(11) auto_increment primary key COMMENT '关系id',
+    comment_id int(11) NOT NULL COMMENT '评论id',
+    comment_fid int(11) NOT NULL COMMENT '用户id',
+    star_fid int(11) NOT NULL COMMENT '点赞用户fid',
+    create_time BIGINT(20) DEFAULT 0 NOT NULL COMMENT '创建时间',
+    update_time BIGINT(20) DEFAULT 0 NOT NULL COMMENT '修改时间',
+    UNIQUE KEY `idx_comment_id_fid_star_fid` (`comment_id`,`fid`,`star_fid`) USING BTREE
+)ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COMMENT = '都城评论点赞关联表' ;
+
 
