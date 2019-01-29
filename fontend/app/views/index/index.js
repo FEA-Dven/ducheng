@@ -52,14 +52,21 @@ class Index extends React.Component {
                 API.getUserOrderStatus(),
                 API.getUserInfo()
             ]);
-            this.setState({
-                selectFoodList: userOrderListInfo.menuList,
-                contentList: userOrderListInfo.recordList,
-                orderNum: userOrderListInfo.order_num,
-                has_order: userOrderStatus.has_order,
-                isSuper: userInfo.role === 1,
-                pageLoading: false
-            });
+            let setObj = {};
+            // 增加判断条件
+            if (userOrderListInfo && userOrderListInfo.menuList && userOrderListInfo.recordList && userOrderListInfo.order_num) {
+                setObj.selectFoodList = userOrderListInfo.menuList;
+                setObj.contentList = userOrderListInfo.recordList;
+                setObj.orderNum = userOrderListInfo.order_num;
+            }
+            if (userOrderStatus) {
+                setObj.has_order = userOrderStatus.has_order;
+            }
+            if (userInfo && userInfo.user_name) {
+                setObj.isSuper = userInfo.role === 1;
+                setObj.pageLoading = false;
+            }
+            this.setState(setObj);
         })
     }
 
