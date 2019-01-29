@@ -251,7 +251,7 @@ class FoodList extends React.Component {
         let { foodList, isSearch, has_order, content, modalVisible, selectFood, cacheMenuList } = this.state;
         // 操作按钮区域
         const ActionArea = ({ menuid }) => {
-            let showReduceBtn = cacheMenuList.find(item => item.menu_id === menuid);
+            let showReduceBtn = cacheMenuList.length > 0 && cacheMenuList.find(item => item.menu_id === menuid);
             return (<div>
                 <Button disabled={has_order} className='action-btn' size='small' icon='plus' data-menuid={menuid} onClick={this.addMenu} ghost={true}/>
                 {showReduceBtn ? <Button disabled={has_order} className='action-btn' size='small' icon='minus' data-menuid={menuid} onClick={this.reduceMenu} ghost={true}/> : ''}
@@ -266,12 +266,6 @@ class FoodList extends React.Component {
         >
             {content}
         </Modal>
-        let searchArea = <div>
-            <div className='title'>搜索菜式</div>
-            <div className='foodlist'>
-                <RadioGroup disabled={has_order} className='foodlist' options={foodList} onChange={this.onChange} value={this.state.selectFood} />
-            </div>
-        </div>
         // 菜单模型
         const MenuModel = ({item}) => {
             return (
@@ -282,6 +276,15 @@ class FoodList extends React.Component {
                 </div>
             )
         }
+        let searchFoodList = UTIL.matchByType(foodList, 'Array') && foodList.map((item, index) => {
+            return <MenuModel key={index} item={item}/>
+        });
+        let searchArea = <div>
+            <div className='title'>搜索菜式</div>
+            <div className='foodlist'>
+                {searchFoodList}
+            </div>
+        </div>
         let DaliyFoodList = foodList.daliy && foodList.daliy.map((item, index) => {
             return <MenuModel key={index} item={item}/>
         });
