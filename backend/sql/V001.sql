@@ -9,7 +9,7 @@ CREATE TABLE t_food_user(
     create_time BIGINT(20) DEFAULT 0 NOT NULL COMMENT '创建时间',
     update_time BIGINT(20) DEFAULT 0 NOT NULL COMMENT '修改时间',
     status TINYINT(2) DEFAULT 1 NOT NULL COMMENT '状态 0:删除, 1:正常',
-    UNIQUE KEY `uidx_uid_user_name` (`uid`,`user_name`) USING BTREE
+    UNIQUE KEY `uidx_fid_user_name` (`fid`,`user_name`) USING BTREE
 )ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COMMENT = 'food 用户表' ;
 
 CREATE TABLE t_food_menu(
