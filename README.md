@@ -12,14 +12,18 @@ backend文件夹为都城后端项目，后端框架用了koa2，项目用了mys
 
 ### 进入文件夹fontend 
 ```
-npm run install
+npm install
 ```
 ```
 npm run dev
 ```
 ### 进入文件夹backend
 ```
-npm run install
+npm install
+```
+### 安装全局pm2
+```
+npm install pm2 -g
 ```
 ### 监听模式
 ```
