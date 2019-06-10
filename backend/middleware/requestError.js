@@ -1,6 +1,6 @@
-const logger = require('./../util/logger.js');
-const ApiError = require('./../library/apiError.js');
-const response = require('./../util/response.js');
+const logger = require('../util/logger.js');
+const ApiError = require('../library/apiError.js');
+const response = require('../util/response.js');
 
 module.exports = async function (ctx, next) {
     let beginTime = new Date().getTime();
