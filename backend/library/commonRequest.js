@@ -121,49 +121,6 @@ class CommonRequest {
 }
 
 
-
-// const fs = require("fs")
-// let accessToken = "11_cObNOTz6MbU-XQA-meISCZPBgdNBG41uxt3jUUG7WPNrX8Vo8fMZeXOSPdDGQciT9ORFsDZlgbXETxoZ75OwKD_fRTM0-oytX4rC2wJWG0VHh-phRSSR3MrDOzIAYFgABAQOV"
-// 获取小程序码
-// async function getWXCode() {
-//     let data = {
-//         scene:"151511545efe",
-//     };
-//     let imgData = await new CommonRequest()
-//     .post("https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=" + accessToken,null,data)
-//     .toJson()
-//     .ssl().binary().go()
-//     fs.writeFile(__dirname + "/003.jpg", imgData,"binary",function (err) {
-//         if (err) {
-//             console.log(err);
-//         } else {
-//             console.log("success")
-//         }
-//     })
-// }
-
-// getWXCode()
-
-
-// 上传图片
-// async function uploadWX(){
-//     let result = await new CommonRequest()
-//     .post("https://api.weixin.qq.com/cgi-bin/media/upload",{
-//         access_token:accessToken,
-//         type: 'image',
-//     })
-//     .ssl()
-//     .setExtraOption("formData",{
-//         attachments: [
-//             fs.createReadStream(__dirname + "/003.jpg")
-//         ],
-//     }).go()
-//     console.log(result)
-// }
-// uploadWX()
-
-
-
 module.exports = {
     CommonRequest: CommonRequest
 }

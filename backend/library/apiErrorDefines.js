@@ -22,26 +22,6 @@ const defines = {
 
     'redis.setError': { code: 1104, message: 'redis设置异常', status: 500 },
 
-    'bookstore.loginError': {code: 1200, message: '登录超时', status: 403},
-    'bookstore.sessionTimeOutError': {code: 1201, message: '会话失效', status: 403},
-    'bookstore.headerParamError': {code: 1202, message: '请求header参数错误', status: 200},
-    'bookstore.lessBookpointsError': {code: 1203, message: '书点不足', status: 200},
-    'bookstore.notPayError': {code: 1204, message: '无需支付，请重新查看', status: 200},
-    'bookstore.hasPaidError': {code: 1205, message: '您已经购买过', status: 200},
-    'bookstore.chapterError': {code: 1206, message: '数据异常', status: 201},
-    'bookstore.notInvitedError': {code: 1206, message: '未检查到您被邀请过', status: 200},
-    'bookstore.hasReceivedError': {code: 1207, message: '您已经领取过奖励', status: 200},
-    'bookstore.invalidInviteCodeError': {code: 1208, message: '无效的链接', status: 200},
-    'bookstore.notMatchMenuError': {code: 1209, message: '无法识别商品', status: 200},
-    'bookstore.unrecognizedUserError': {code: 1210, message: '获取玩家信息失败', status: 403},
-
-    'zodiac.userNotFound':{code: 1306, message:'找不到该用户', status: 403},
-    'zodiac.redisError' : {code: 1301, message: 'redis数据存储异常 %s', status: 403},
-    'zodiac.dbError': {code: 1302, message: '数据库存储异常 %s', status: 403},
-    'zodiac.illegalUser': {code: 1303, message: '非法用户', status: 403},
-    'zodiac.addShareRecordFail': {code: 1304, message: '新增用户分享记录失败', status: 200},
-    'zodiac.illegalAppid': {code: 1305, message: '非法appid', status: 200},
-
     'food.illegalUser' : {code: 1201, message: '非法用户', status: 403},
     'food.userHasExist' : {code: 1202, message: '用户已经存在', status: 200},
     'food.objectNotExist' : {code: 1203, message: '%s', status: 200},
