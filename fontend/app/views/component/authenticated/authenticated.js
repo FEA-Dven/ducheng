@@ -6,21 +6,17 @@ function requireAuthentication(Component) {
     if (Component.AuthenticatedComponent) {
         return Component.AuthenticatedComponent
     }
-
     // 创建验证组件
     class AuthenticatedComponent extends React.Component {
         state = {
             login: true,
         }
-
         componentWillMount() {
             this.checkAuth();
         }
-
         componentWillReceiveProps(nextProps) {
             this.checkAuth();
         }
-
         checkAuth() {
             // 未登陆重定向到登陆页面
             let login = UTIL.shouldRedirectToLogin();
@@ -30,7 +26,6 @@ function requireAuthentication(Component) {
             }
             this.setState({ login: !login });
         }
-
         render() {
             if (this.state.login) {
                 return <Component {...this.props} />
@@ -38,7 +33,6 @@ function requireAuthentication(Component) {
             return ''
         }
     }
-
     return AuthenticatedComponent
 }
 
