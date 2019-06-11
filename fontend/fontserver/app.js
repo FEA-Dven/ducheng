@@ -27,6 +27,7 @@ app.use(async function(ctx, next) {
     await next()
 })
 if (isDev) {
+    // koawebpack模快
     let koaWebpack = require('koa-webpack-middleware')
     let devMiddleware = koaWebpack.devMiddleware
     let hotMiddleware = koaWebpack.hotMiddleware

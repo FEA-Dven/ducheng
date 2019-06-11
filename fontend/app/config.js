@@ -10,4 +10,4 @@ export const cookieExpires = 1;
 /*
 API请求的域名           
  */
-export const API_HOST = API_HOSTS['dev'];
+export const API_HOST = API_HOSTS['prod'];
