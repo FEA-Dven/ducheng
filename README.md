@@ -17,6 +17,10 @@ npm install
 ```
 npm run dev
 ```
+### 本地开发路径
+```
+http://localhost:3006/food/login
+```
 ### 进入文件夹backend
 ```
 npm install
